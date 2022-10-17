@@ -1,0 +1,27 @@
+name: EnWechatApi
+on:
+  schedule:
+    - cron:  '0 22 * * *'
+  workflow_dispatch:
+
+jobs:
+  send_message:
+    runs-on: ubuntu-latest
+    name: send message to your friend
+    
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        ref: main
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9.1
+    - name: requirements
+      run: pip install --upgrade pip && pip install requests && pip install zhdate
+    - name: Checkin
+      run: python3 ./main.py
+
+
