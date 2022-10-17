@@ -74,7 +74,6 @@ else:
 # 距离出生日期已过多少天
 today_b = ZhDate.today() - ZhDate(chusheng_nian,chusheng_yue,chusheng_ri)
 msg13 = "今天距离您的出生日期已经过了" + str(today_b) +"天"
-print(msg13)
 
 # 距离春节还有多少天
 chunjie_next = ZhDate(nongli + 1,1,1) - ZhDate.today()
@@ -90,7 +89,7 @@ def getTocken():
 def sendText(tocken):
     sendUrl = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=" + tocken
     data = json.dumps({
-        "totag" : "1",
+        "touser" : "@all",
         "msgtype" : "text",
         "agentid" : 1000002,
         "text" : {
